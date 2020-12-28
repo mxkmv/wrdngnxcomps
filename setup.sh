@@ -1,7 +1,5 @@
-mkdir ./data
-mkdir ./data/html/
-mkdir ./data/mysql/
-chown mysql:docker -R ./data/mysql/
-#mkdir ./html
+mkdir ./html/
 mkdir ./logs
+mkdir ./mysql/
+chown mysql:docker -R ./mysql/
 docker-compose up -d
