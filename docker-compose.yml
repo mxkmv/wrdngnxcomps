@@ -1,7 +1,9 @@
-version: '3'
+version: '3.3'
 services:
   mysql:
     image: mariadb
+    container_name: mysql
+    restart: always
     volumes:
       - ./mysql:/var/lib/mysql
     environment:
@@ -14,6 +16,8 @@ services:
     restart: always
   wordpress:
     image: wordpress:php7.4-fpm-alpine
+    container_name: wordpress
+    restart: always
     volumes:
       - ./html:/var/www/html
     depends_on:
@@ -30,6 +34,8 @@ services:
     restart: always
   nginx:
     image: nginx:latest
+    container_name: nginx
+    restart: always
     volumes:
       - ./nginx:/etc/nginx/conf.d
       - ./html:/var/www/html
@@ -37,3 +43,6 @@ services:
       - 8080:80
     links:
       - wordpress
+volumes:
+      html: {}
+
